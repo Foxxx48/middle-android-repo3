@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import kotlinx.coroutines.Dispatchers
 import ru.yandex.architectureproject.App
 import ru.yandex.architectureproject.data.db.TaskDatabase
-import ru.yandex.architectureproject.data.repository.TaskRepository
+import ru.yandex.architectureproject.data.repository.TaskRepositoryImpl
 import ru.yandex.architectureproject.domain.AddTaskUseCase
 import ru.yandex.architectureproject.domain.DeleteTaskUseCase
 import ru.yandex.architectureproject.domain.GetAllTasksUseCase
@@ -15,7 +15,7 @@ import ru.yandex.architectureproject.domain.IncompleteTaskUseCase
 class TaskViewModelFactory : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         val taskDao = TaskDatabase.getInstance(App.context).taskDao()
-        val repository = TaskRepository(taskDao)
+        val repository = TaskRepositoryImpl(taskDao)
         val addTaskUseCase = AddTaskUseCase(repository)
         val deleteTaskUseCase = DeleteTaskUseCase(repository)
         val completeTaskUseCase = CompleteTaskUseCase(repository)

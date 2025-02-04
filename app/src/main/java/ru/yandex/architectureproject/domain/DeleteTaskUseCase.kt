@@ -1,6 +1,6 @@
 package ru.yandex.architectureproject.domain
 
-import ru.yandex.architectureproject.data.repository.TaskRepository
+import ru.yandex.architectureproject.domain.repository.TaskRepository
 
 class DeleteTaskUseCase(
     private val repository: TaskRepository,
